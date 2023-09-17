@@ -9,6 +9,7 @@ const uploadController = require('./controllers/upload.controller');
 const app = express();
 
 mongoose.connect(process.env.DB_URL);
+app.use('/images', express.static('public/images'))
 
 app.use(cors());
 app.use(express.json());
