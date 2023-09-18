@@ -1,0 +1,3 @@
+DB_URL=mongodb+srv://<username>:<pass>@cluster0.wvecckw.mongodb.net/?retryWrites=true&w=majority
+PORT=3000
+JWT_SECRET=resideresecret

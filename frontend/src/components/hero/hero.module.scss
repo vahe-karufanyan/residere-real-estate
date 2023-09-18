@@ -1,0 +1,125 @@
+@import '../../variables.scss';
+
+.container {
+  position: relative;
+  margin-top: -60px;
+  height: calc(80vh);
+  width: 100%;
+  overflow: hidden;
+}
+
+.background {
+  position: absolute;
+  z-index: -1;
+  height: inherit;
+  width: inherit;
+  background-image: url('../../assets/hero-background.jpg');
+  background-size: cover;
+  filter: blur(8px);
+  -webkit-filter: blur(8px);
+  background-color: rgba(0, 0, 0, 0.4);
+  background-blend-mode: darken;
+  transform: scale(1.1)
+}
+
+.wrapper {
+  max-width: 1180px;
+  margin: 0 auto;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.wrapper>h1 {
+  font-size: 80px;
+  font-weight: bold;
+  color: #fff;
+  white-space: nowrap;
+  margin-bottom: 1rem;
+}
+
+.wrapper>h5 {
+  color: #efefef;
+  font-size: 36px;
+  margin-bottom: 1.5rem;
+}
+
+.wrapper>h4 {
+  color: #efefef;
+  margin-bottom: 2.5rem;
+}
+
+.wrapper>.options {
+  width: 70%;
+  backdrop-filter: blur(8px);
+  background-color: $bg;
+  padding: 1rem 0.75rem;
+  border-radius: 6px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.options>select {
+  height: 60px;
+  min-width: 160px;
+  max-width: 210px;
+  outline: none;
+  padding: 0.5rem 1.1rem;
+  background-color: $bg;
+  color: $primary;
+  border: 1px solid $primary;
+  border-radius: 6px;
+  font-size: 22px;
+  cursor: pointer;
+  transition: background 300ms ease;
+}
+
+.options>select:hover {
+  background-color: rgba(255, 255, 255, 0.25);
+}
+
+.options>select:first-child {
+  color: $primary;
+}
+
+.options>.rangeInput {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.options>.searchIcon {
+  padding: 0.6rem;
+  width: fit-content;
+  border-radius: 6px;
+  background: $primary;
+  color: #fff;
+  font-weight: 500;
+  font-size: 22px;
+  border: $primary solid 2px;
+  cursor: pointer;
+  transition: background ease 300ms;
+}
+
+.options>.searchIcon:hover {
+  background-color: rgba(255, 255, 255, 0.625);
+  color: $primary;
+}
+
+/* RESPONSIVEE */
+@media only screen and (max-width: 768px) {
+  .wrapper>h2 {
+    font-size: 40px;
+  }
+
+  .wrapper>h5 {
+    font-size: 30px;
+  }
+
+  .wrapper>.options {
+    width: 90%;
+  }
+}
