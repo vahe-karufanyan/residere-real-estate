@@ -1,6 +1,6 @@
 @import '../../variables.scss';
 
-.container{
+.container {
   position: relative;
   margin-top: -60px;
   height: calc(80vh);
@@ -22,7 +22,7 @@
   transform: scale(1.1)
 }
 
-.wrapper{
+.wrapper {
   max-width: 1180px;
   margin: 0 auto;
   height: 100%;
@@ -32,7 +32,7 @@
   justify-content: center;
 }
 
-.wrapper > h1{
+.wrapper>h1 {
   font-size: 80px;
   font-weight: bold;
   color: #fff;
@@ -40,19 +40,21 @@
   margin-bottom: 1rem;
 }
 
-.wrapper > h5{
+.wrapper>h5 {
   color: #efefef;
-  font-size: 36px; 
-  margin-bottom: 1rem;
-}
-.wrapper > h4{
-  color: #efefef;
-  margin-bottom: 3rem;
+  font-size: 36px;
+  margin-bottom: 1.5rem;
 }
 
-.wrapper > .options{
+.wrapper>h4 {
+  color: #efefef;
+  margin-bottom: 2.5rem;
+}
+
+.wrapper>.options {
   width: 70%;
-  background-color: $bg;;
+  backdrop-filter: blur(8px);
+  background-color: $bg;
   padding: 1rem 0.75rem;
   border-radius: 6px;
   display: flex;
@@ -60,7 +62,7 @@
   align-items: center;
 }
 
-.options > select{
+.options>select {
   height: 60px;
   min-width: 160px;
   max-width: 210px;
@@ -75,21 +77,21 @@
   transition: background 300ms ease;
 }
 
-.options > select:hover {
+.options>select:hover {
   background-color: rgba(255, 255, 255, 0.25);
 }
 
-.options > select:first-child{
+.options>select:first-child {
   color: $primary;
 }
 
-.options > .rangeInput{
+.options>.rangeInput {
   display: flex;
   align-items: center;
   gap: 0.5rem;
 }
 
-.options > .searchIcon{
+.options>.searchIcon {
   padding: 0.6rem;
   width: fit-content;
   border-radius: 6px;
@@ -102,23 +104,22 @@
   transition: background ease 300ms;
 }
 
-.options > .searchIcon:hover{
+.options>.searchIcon:hover {
   background-color: rgba(255, 255, 255, 0.625);
   color: $primary;
 }
 
 /* RESPONSIVEE */
 @media only screen and (max-width: 768px) {
-  .wrapper > h2{
-      font-size: 40px;
-  }
-  
-  .wrapper > h5{
-      font-size: 30px; 
+  .wrapper>h2 {
+    font-size: 40px;
   }
 
-  .wrapper > .options{
-      width: 90%;
+  .wrapper>h5 {
+    font-size: 30px;
+  }
+
+  .wrapper>.options {
+    width: 90%;
   }
 }
-  

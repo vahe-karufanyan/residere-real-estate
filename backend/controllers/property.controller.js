@@ -8,9 +8,23 @@ propertyController.get('/getAll', async (req, res) => {
   try {
     const properties = await Property.find({}).populate('agent', '-password');
 
-    console.log(properties);
-
     return res.status(200).json(properties);
+  } catch (error) {
+    console.error(error);
+  }
+});
+
+propertyController.get('/getCountries', async (req, res) => {
+  try {
+    const countries = await Property.find({});
+
+    let filteredCountries = countries.filter((obj, pos, arr) => {
+      return arr.map(countries => countries.country).indexOf(obj.country) === pos;
+    })
+
+    let uniqueCountries = filteredCountries.map(a => a.country);
+    
+    return res.status(200).json(uniqueCountries);
   } catch (error) {
     console.error(error);
   }
@@ -104,11 +118,11 @@ propertyController.put('/:id', verifyToken, verifyAgent, async (req, res) => {
 propertyController.delete('/:id', verifyToken, verifyAgent, async (req, res) => {
   try {
     const property = await Property.findById(req.params.id);
-    if (property.agent.toString() !== req.user.id) {
+    if (property.agent._id.toString() !== req.user.id) {
       throw new Error('You are not allowed to delete other people properties');
     }
 
-    await property.delete();
+    await Property.deleteOne({_id: req.params.id});
 
     return res.status(200).json({ msg: 'Successfully deleted property' });
   } catch (error) {

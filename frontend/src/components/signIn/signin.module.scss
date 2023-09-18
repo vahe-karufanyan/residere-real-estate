@@ -17,7 +17,7 @@
 }
 
 .wrapper {
-  height: 66vh;
+  height: 48vh;
   width: 27.5vw;
   border-radius: 8px;
   display: flex;
@@ -28,9 +28,9 @@
 .wrapper>h2 {
   color: $primary;
   text-align: center;
-  margin: 1.5rem 0;
   font-size: 42px;
   font-weight: 500;
+  margin: 1.5rem 0;
 }
 
 form {
@@ -56,22 +56,6 @@ form>input:hover {
 
 form>input:focus {
   border: 2px solid $primary;
-}
-
-.checkbox {
-  display: flex;
-  gap: 10px;
-}
-
-.checkbox>input {
-  height: 22px;
-  width: 22px;
-}
-
-.checkbox>label {
-  align-self: center;
-  cursor: pointer;
-  color: $primary;
 }
 
 form>button {
@@ -119,6 +103,9 @@ form>p>a {
   top: 5rem;
   right: 5rem;
   font-weight: 500;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 @media only screen and (max-width: 992px) {
@@ -130,7 +117,7 @@ form>p>a {
 
 @media only screen and (max-width: 768px) {
   .wrapper {
-    height: 80vh;
-    width: 50vw;
+    height: 60vh;
+    width: 40vw;
   }
 }

@@ -8,7 +8,8 @@
   width: 100%;
   z-index: 9999;
   background-color: $bg;
-  border-bottom: 1px solid #888;
+  border-bottom: 1px solid $secodarybg;
+  backdrop-filter: blur(8px);
 }
 
 .container.scrolled {
@@ -73,7 +74,7 @@
   background-color: $primary;
   color: #fff;
   border: 1px solid transparent;
-  border-radius: 12px;
+  border-radius: 6px;
   font-size: 18px;
   cursor: pointer;
   transition: 150ms all;
@@ -94,36 +95,43 @@
 .right a {
   text-decoration: none;
 }
-
-.right .list {
-  padding: 0.25rem 0.75rem;
-  border-radius: 12px;
-  transition: 150ms all;
-  cursor: pointer;
-  position: relative;
+.right .username {
+  color: $primary;
 }
 
-.right .profileImg {
-  width: 33px;
-  height: 33px;
-  object-fit: cover;
-  border-radius: 50%;
-  margin-right: 1rem;
+.right .list {
+  padding: 0.4rem 1.2rem;
+  background-color: $primary;
+  color: #fff;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: 150ms all;
+}
+.right .list:hover {
+  border-color: $primary;
+  color: $primary;
+  background-color: #fff;
 }
 
 .right .logoutBtn {
   cursor: pointer;
-  color: #222;
-  transition: 1500ms all ease-in-out;
+  color: $primary;
+  border: transparent solid 1px;
+  border-radius: 6px;
+  padding: 0.4rem 1.2rem;
+  font-size: 18px;
+  transition: 150ms all ease-in-out;
 }
 
 .right .logoutBtn:hover {
-  color: #666;
+  color: $primary;
+  border: $primary solid 1px;
 }
 
-/* list property */
 .listPropertyForm {
-  position: absolute;
+  position: fixed;
   top: 0;
   right: 0;
   height: 100vh;
@@ -137,16 +145,20 @@
 
 .listPropertyWrapper {
   position: relative;
-  background-color: #fff;
-  height: 92.5vh;
-  width: 35vw;
+  background-color: $bg;
+  height: 80vh;
+  width: 26vw;
+  backdrop-filter: blur(8px);
   border-radius: 20px;
 }
 
 .listPropertyWrapper>h2 {
   text-align: center;
-  margin: 2.5rem 0;
-  margin-bottom: 3.5rem;
+  margin: 2rem 0;
+  font-size: 30px;
+  font-weight: 500;
+  color: $primary;
+  margin-bottom:1.5rem;
 }
 
 .listPropertyWrapper>form>div>label {
@@ -155,13 +167,16 @@
   gap: 12px;
   font-size: 18px;
   margin-right: 1rem;
+  color: $primary;
+  align-self: center;
 }
 
 .listPropertyWrapper>form>select {
   display: flex;
   justify-content: flex-start;
   background-color: white;
-  color: #222;
+  color: $primary;
+  border-radius: 6px;
   outline: none;
   padding: 0.5rem 0.25rem;
   width: 50%;
@@ -188,48 +203,6 @@
   right: 1rem;
   top: 3rem;
   border-radius: 8px;
-}
-
-/* user modal */
-.username {
-  cursor: pointer;
-}
-
-.userModal {
-  position: absolute;
-  padding: 0.5rem 1rem;
-  background-color: #efefef;
-  color: #222;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1rem;
-  top: 2.5rem;
-  right: 9rem;
-  border-radius: 20px;
-}
-
-.userModal>.myProperties {
-  cursor: pointer;
-}
-
-.userModalClose {
-  position: absolute;
-  top: 0.5rem;
-  right: 0.5rem;
-  cursor: pointer;
-}
-
-.yachtBtn {
-  background-color: #f00;
-  color: #fff;
-  text-decoration: none;
-  padding: 0.25rem 0.75rem;
-  border-radius: 8px;
-}
-
-.myProfile {
-  color: inherit;
 }
 
 /* RESPONSIVEE */

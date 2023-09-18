@@ -16,9 +16,9 @@ const Signup = () => {
 
   const handleState = (e: React.ChangeEvent<HTMLInputElement>) => {
     setState((prev) => {
-      console.log('prev::: ', prev);
-
-      return { ...prev, [e.target.name]: e.target.value };
+      return { ...prev, [e.target.name]:e.target.type === 'checkbox'
+      ? e.target.checked 
+      : e.target.value  };
     });
   };
 
@@ -33,11 +33,6 @@ const Signup = () => {
     }
 
     try {
-      setEmptyFields(true);
-      setTimeout(() => {
-        setEmptyFields(false);
-      }, 2500);
-      return;
 
       const headers = {
         'Content-Type': 'application/json',
@@ -61,13 +56,13 @@ const Signup = () => {
       <div className={classes.wrapper}>
         <h2>Sign Up</h2>
         <form onSubmit={handleRegister}>
-          <input type='text' name='username' placeholder='Username...' onChange={handleState} />
-          <input type='text' name='email' placeholder='Email...' onChange={handleState} />
+          <input type='text' name='username' placeholder='Username' onChange={handleState} />
+          <input type='email' name='email' placeholder='Email' onChange={handleState} />
+          <input type='password' name='password' placeholder='Password' onChange={handleState} />
           <div className={classes.checkbox}>
             <label htmlFor='agent'>Register as an agent</label>
             <input id='agent' type='checkbox' name='agent' onChange={handleState} />
           </div>
-          <input type='password' name='password' placeholder='Password...' onChange={handleState} />
           <button type='submit'>Register</button>
           <p>
             Already have an account? <Link to='/signin'>Login</Link>

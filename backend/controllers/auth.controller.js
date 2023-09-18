@@ -16,7 +16,7 @@ authController.post('/register', async (req, res) => {
     const newUser = await User.create({ ...req.body, password: hashedPassword });
 
     const { password, ...others } = newUser._doc;
-    const token = jwt.sign({ id: newUser._id, role: newUser.role }, process.env.JWT_SECRET, { expiresIn: '8d' });
+    const token = jwt.sign({ id: newUser._id, agent: newUser.agent }, process.env.JWT_SECRET, { expiresIn: '8d' });
 
     return res.status(201).json({ others, token });
   } catch (error) {
@@ -37,7 +37,7 @@ authController.post('/login', async (req, res) => {
     }
 
     const { password, ...others } = user._doc;
-    const token = jwt.sign({ id: user._id, role: user.role }, process.env.JWT_SECRET, { expiresIn: '8d' });
+    const token = jwt.sign({ id: user._id, agent: user.agent }, process.env.JWT_SECRET, { expiresIn: '8d' });
 
     return res.status(200).json({ others, token });
   } catch (error) {

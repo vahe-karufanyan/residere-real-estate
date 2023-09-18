@@ -6,7 +6,8 @@ import { request } from '../../utils/fetchApi'
 
 const Hero = () => {
   const [type, setType] = useState("house")
-  const [location, setLocation] = useState("0")
+  const [country, setCountry] = useState("0")
+  const [countries, setCountries] = useState([])
   const [priceRange, setPriceRange] = useState("0")
   const [apartments, setApartments] = useState(0)
   const [houses, setHouses] = useState(0)
@@ -15,8 +16,7 @@ const Hero = () => {
   // TODO here or somewhere home(fetching properties)
 
   const handleSearch = () => {
-    // navigating to properties
-    navigate(`/properties?type=${type}&location=${location}&priceRange=${priceRange}`)
+    navigate(`/properties?type=${type}&country=${country}&priceRange=${priceRange}`)
   }
 
 
@@ -24,7 +24,7 @@ const Hero = () => {
     const fetchPropertiesNumber = async() => {
       try {
          const data = await request('/property/find/types', 'GET')
-         console.log('data::: ', data);
+        //  const data = await request('/property/getCountries', 'GET')
          setApartments(data.apartment)
          setHouses(data.house)
       } catch (error) {
@@ -32,6 +32,18 @@ const Hero = () => {
       }
     }
     fetchPropertiesNumber()
+  }, [])
+
+  useEffect(() => {
+    const fetchCountries = async() => {
+      try {
+         const data = await request('/property/getCountries', 'GET')
+        setCountries(data)
+      } catch (error) {
+        console.error(error)
+      }
+    }
+    fetchCountries()
   }, [])
 
   return (
@@ -49,20 +61,19 @@ const Hero = () => {
           </select>
           <select onChange={(e) => setPriceRange(e.target.value)}>
             <option disabled>Select Price Range</option>
-            <option value="0">0-100,000</option>
-            <option value="1">100,000-200,000</option>
-            <option value="2">200,000-300,000</option>
-            <option value="3">300,000-400,000</option>
-            <option value="4">400,000+</option>
+            <option value="0">$0-100,000</option>
+            <option value="1">$100,000-200,000</option>
+            <option value="2">$200,000-300,000</option>
+            <option value="3">$300,000-400,000</option>
+            <option value="4">$400,000+</option>
           </select>
-          <select onChange={(e) => setLocation(e.target.value)}>
-            <option disabled>Select Location</option>
-            <option value="0">Europe</option>
-            <option value="1">Asia</option>
-            <option value="2">Africa</option>
-            <option value="3">South America</option>
-            <option value="4">North America</option>
-            <option value="5">Oceania</option>
+          <select onChange={(e) => setCountry(e.target.value)}>
+            <option disabled>Select Country</option>
+            {
+              countries.length && countries.map((country) => {
+                return <option key={country} value={country}>{country}</option>
+              })
+            }
           </select>
           <div className={classes.searchIcon} onClick={handleSearch}>SEARCH</div>
         </div>
